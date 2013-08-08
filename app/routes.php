@@ -7,21 +7,21 @@ Route::get('/', function()
 	return View::make('root');
 });
 
-Route::get('/welcome', function()
+Route::get('/welcome', array('https', function()
 {
   $jwt = Session::get('jwt');
   $jws = Session::get('jws');
   $attributes = $jwt->{'https://aaf.edu.au/attributes'};
   return View::make('welcome', array('jws' => $jws, 'jwt' => $jwt, 'attributes' => $attributes));
-});
+}));
 
-Route::get('/logout', function()
+Route::get('/logout', array('https',function()
 {
   Session::flush();
-  return Redirect::to_secure('/');
-});
+  return Redirect::to('/');
+}));
 
-Route::post('/auth/jwt', function()
+Route::post('/auth/jwt', array('https', function()
 {
   $jws = Input::get('assertion');
   $jwt = JWT::decode($jws, 'abcdABCDabcdABCDabcd');
@@ -31,7 +31,7 @@ Route::post('/auth/jwt', function()
   if($jwt->aud == 'https://aaf-echo.gopagoda.com' && strtotime($jwt->exp) < $now && $now > strtotime($jwt->nbf)) {
     Session::put('jws', $jws);
     Session::put('jwt', $jwt);
-    return Redirect::to_secure('/welcome');
+    return Redirect::to('/welcome');
   } else {
     App::abort(403,"JWS was invalid");
   }

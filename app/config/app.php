@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'https://aaf-echo.gopagadobox.com',
 
 	/*
 	|--------------------------------------------------------------------------
