@@ -2,26 +2,26 @@
 
 use JWT\Authentication\JWT;
 
-Route::get('/', array('https' => false, 'as' => 'root', function()
+Route::get('/', function()
 {
 	return View::make('root');
-}));
+});
 
-Route::get('/welcome', array('https' => true, 'as' => 'welcome', function()
+Route::get('/welcome', function()
 {
   $jwt = Session::get('jwt');
   $jws = Session::get('jws');
   $attributes = $jwt->{'https://aaf.edu.au/attributes'};
   return View::make('welcome', array('jws' => $jws, 'jwt' => $jwt, 'attributes' => $attributes));
-}));
+});
 
-Route::get('/logout', array('https' => true, 'as' => 'logout',function()
+Route::get('/logout', function()
 {
   Session::flush();
-  return Redirect::to_route('root');
-}));
+  return Redirect::to('https://aaf-echo.gopagoda.com');
+});
 
-Route::post('/auth/jwt', array('https' => true, function()
+Route::post('/auth/jwt', function()
 {
   $jws = Input::get('assertion');
   $jwt = JWT::decode($jws, 'abcdABCDabcdABCDabcd');
@@ -31,8 +31,8 @@ Route::post('/auth/jwt', array('https' => true, function()
   if($jwt->aud == 'https://aaf-echo.gopagoda.com' && strtotime($jwt->exp) < $now && $now > strtotime($jwt->nbf)) {
     Session::put('jws', $jws);
     Session::put('jwt', $jwt);
-    return Redirect::to_route('welcome');
+    return Redirect::to('https://aaf-echo.gopagoda.com/welcome');
   } else {
     App::abort(403,"JWS was invalid");
   }
-}));
+});
