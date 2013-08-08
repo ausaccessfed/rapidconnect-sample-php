@@ -1,0 +1,20 @@
+global:
+  env:
+    - LARAVEL_ENV: production
+web1:
+  name: your-app-name
+  shared_writable_dirs:
+    - /storage/cache
+    - /storage/database
+    - /storage/logs
+    - /storage/sessions
+    - /storage/views
+    - /storage/work
+  document_root: /public
+  php_version: 5.4.16
+  php_extensions:
+    - mcrypt
+    - curl
+  after_build:
+    - "curl -s https://getcomposer.org/installer | php"
+    - "php composer.phar install"
