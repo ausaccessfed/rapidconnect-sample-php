@@ -21,7 +21,7 @@ Route::get('/logout', function()
   return Redirect::to_secure('/');
 });
 
-Route::post('/auth/jwt', array('https', function()
+Route::post('/auth/jwt', function()
 {
   $jws = Input::get('assertion');
   $jwt = JWT::decode($jws, 'abcdABCDabcdABCDabcd');
