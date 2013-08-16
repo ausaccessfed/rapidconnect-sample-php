@@ -25,7 +25,7 @@
           <p>Once created the secure JSON Web Token is transmitted to Pagoda Box applications where it can be decoded using PHP without the need for low level unix installation of components like the Shibboleth SP.</p>
 
           <br>
-          <center><a href="http://apps.dev.bradleybeddoes.com/jwt/authnrequest/research/ndWBhtDcbre9mE0z" class="btn btn-large btn-info">LOGIN VIA THE AUSTRALIAN ACCESS FEDERATION</a></center>
+          <center><a href="INSERT_YOUR_RAPID_CONNECT_URL_HERE" class="btn btn-large btn-info">LOGIN VIA THE AUSTRALIAN ACCESS FEDERATION</a></center>
         </div>
       </div>
     </section>

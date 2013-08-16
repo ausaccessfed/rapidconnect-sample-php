@@ -41,7 +41,7 @@
           <h3>This is what your actual signed JWT looks like on the wire</h3>
           <?php echo $jws; ?>
 
-          <h3>How simple is the code to do this?</h3>
+          <h3>Really easy for developers</h3>
           <p>Here is the full source (minus the actual HTML) of the application you're currently using. It is developed in <a href="http://www.php.net">PHP</a> using the <a href="http://laravel.com">Laravel framework</a>.</p>
           <script src="https://gist.github.com/bradleybeddoes/7051824753235cde90b8.js"></script>
       </div>
@@ -50,7 +50,7 @@
     <footer>
       <div class="container">
         <hr>
-        <p>Heroku Demo Application</p>
+        <p>PHP Go Pagoda Demo Application</p>
         <p>
           Developed for the <a href="http://www.aaf.edu.au">Australian Access Federation</a> by <a href="http://bradleybeddoes.com">Bradley Beddoes</a>
         </p>
