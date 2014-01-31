@@ -36,3 +36,8 @@ Route::post('/auth/jwt', function()
     App::abort(403,"JWS was invalid");
   }
 });
+
+Route::get('/INSERT_YOUR_RAPID_CONNECT_URL_HERE', function()
+{
+  return View::make('readme');
+});
