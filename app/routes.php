@@ -18,7 +18,7 @@ Route::get('/welcome', function()
 Route::get('/logout', function()
 {
   Session::flush();
-  return Redirect::to('https://aaf-echo.gopagoda.com');
+  return Redirect::to('http://localhost:8000');
 });
 
 Route::post('/auth/jwt', function()
@@ -28,10 +28,10 @@ Route::post('/auth/jwt', function()
 
   # In a complete app we'd also store and validate the jti value to ensure there is no reply on this unique token ID
   $now = strtotime("now");
-  if($jwt->aud == 'https://aaf-echo.gopagoda.com' && strtotime($jwt->exp) < $now && $now > strtotime($jwt->nbf)) {
+  if($jwt->aud == 'http://localhost:8000' && strtotime($jwt->exp) < $now && $now > strtotime($jwt->nbf)) {
     Session::put('jws', $jws);
     Session::put('jwt', $jwt);
-    return Redirect::to('https://aaf-echo.gopagoda.com/welcome');
+    return Redirect::to('http://localhost:8000/welcome');
   } else {
     App::abort(403,"JWS was invalid");
   }
