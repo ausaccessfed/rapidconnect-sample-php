@@ -23,8 +23,9 @@ Route::get('/logout', function()
 
 Route::post('/auth/jwt', function()
 {
+  $secret = 'abcdABCDabcdABCDabcd';
   $jws = Input::get('assertion');
-  $jwt = JWT::decode($jws, 'abcdABCDabcdABCDabcd');
+  $jwt = JWT::decode($jws, $secret);
 
   # In a complete app we'd also store and validate the jti value to ensure there is no reply on this unique token ID
   $now = strtotime("now");
